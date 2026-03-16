@@ -75,13 +75,11 @@ for i in values:
 
 
 total = 0
-search_time = [0]*10000
 for i in values:
-    search_time[i] = timeit.timeit(lambda: tree.search(i), number=10)/10
-    total += search_time[i]*10
-
+    total += timeit.timeit(lambda: tree.search(i), number=10)/10
+avg = total/10000
 print(f"total time  for 1: {total}")
-print(f"sum of average times for 1: {add_list(search_time)}")
+print(f"sum of average times for 1: {add_list(avg)}")
 
 random.shuffle(values)
 tree2 = Binary_Search_Tree()
@@ -89,13 +87,12 @@ for i in values:
     tree2.insert(i)
 
 total2 = 0
-search_time2 = [0]*10000
 for i in values:
-    search_time2[i] = timeit.timeit(lambda: tree2.search(i), number=10)/10
-    total2 += search_time2[i]*10
+    total2 = timeit.timeit(lambda: tree2.search(i), number=10)/10
 
+avg2 = total2/10000 
 print(f"total time for 2: {total2}")
-print(f"sum of average times for 2: {add_list(search_time2)}")
+print(f"sum of average times for 2: {add_list(avg2)}")
 
 
 # method 2 is faster because the tree is more balanced, in method 1 every value is inserted to
